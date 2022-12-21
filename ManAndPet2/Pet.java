@@ -1,6 +1,6 @@
-package ManAndPet;
+package ManAndPet2;
 
-public abstract class Pet {
+public abstract class Pet{
     protected String name;
 
     protected int age;
@@ -15,6 +15,7 @@ public abstract class Pet {
         this.weight = weight;
         this.full = false;
         this.move = false;
+        this.sleep = false;
     }
 
     public void setName(String name) {
@@ -53,7 +54,7 @@ public abstract class Pet {
 
     public void setMove(boolean move){
         this.move = move;
-        System.out.println(this.move? "Питомец движется" : "Питомец стоит");
+        // System.out.println(this.move? "Питомец движется" : "Питомец стоит");
     }
 
     public boolean getMove(){
@@ -63,7 +64,7 @@ public abstract class Pet {
 
     public void setSleep(boolean sleep){
         this.sleep = sleep;
-        System.out.println(this.sleep? "Питомец спит" : "Питомец не спит");
+        // System.out.println(this.sleep? "Питомец спит" : "Питомец не спит");
     }
 
     public boolean getSleep(){
@@ -71,11 +72,13 @@ public abstract class Pet {
         return sleep;
     }
 
-    public abstract void getSay();
+
+    // уберем этот метод в интерфейс
+    // public abstract void getSay();
 
     @Override
     public String toString() {
         return "Возраст: " + age + " месяцев, вес: " + weight + "кг";
-    }
+    }    
     
 }

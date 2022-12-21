@@ -1,4 +1,4 @@
-package ManAndPet;
+package ManAndPet2;
 
 public class Bowl {
     private boolean fill;

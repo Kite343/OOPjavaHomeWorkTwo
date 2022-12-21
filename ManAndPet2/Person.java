@@ -1,10 +1,26 @@
-package ManAndPet;
+package ManAndPet2;
 
-public class Person {
+import java.util.ArrayList;
+
+public class Person implements ActionWithPet, DishesAction{
     private String name;
     private int age;
 
     private boolean atHome;
+
+    private ArrayList<Pet> pets = new ArrayList<>();
+
+    public ArrayList<Pet> getPets() {
+        return pets;
+    }
+
+    public void setPets(ArrayList<Pet> pets) {
+        this.pets = pets;
+    }
+
+    public void addPets(Pet pet) {
+        this.pets.add(pet);
+    }
 
     public Person(String name, int age){
         this.name = name;
@@ -36,11 +52,8 @@ public class Person {
     public String toString() {
         return name + ", возраст: " + age;
     }
-    
-    public void cleanBowl(Bowl bowl){
-        bowl.setClean(true);
-    }
 
+    @Override
     public void fillBowl(Bowl bowl) {
         if(bowl.getClean()){
             bowl.setFill(true);
@@ -49,6 +62,12 @@ public class Person {
         else{
             System.out.println("Миска грязная, надо её помыть");
         }
+        
     }
 
+    @Override
+    public void cleanBowl(Bowl bowl) {
+        bowl.setClean(true);
+    }
+        
 }
