@@ -1,6 +1,8 @@
 package ManAndPet2;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Main {
     public static void main(String[] args){
@@ -21,15 +23,19 @@ public class Main {
         System.out.println(blueBowl.toString());
 
 
-        // Выберем питомцев, которых можно покормить, у которых есть интерфейс PetActions
         for (Pet pet : alex.getPets()) {
             System.out.println(pet.toString());
         }
         
         System.out.println();
 
+        // Выберем питомцев, которых можно покормить, у которых есть интерфейс PetActions
+        // Список по размеру, от большего к меньшему
+        ArrayList <Pet> pets = alex.getPets();
+        Collections.sort(pets);
+        Collections.reverse(pets);
         ArrayList<PetActions> petActions = new ArrayList<>();
-        for (Pet pet : alex.getPets()) {
+        for (Pet pet : (pets)) {
             if(pet instanceof PetActions){
                 petActions.add((PetActions) pet);
                 System.out.println("Добавили " + pet.getName());
@@ -42,6 +48,15 @@ public class Main {
         for (PetActions pet : petActions) {
             manAndPet(pet, alex, blueBowl);
         }
+
+        System.out.println();
+        //  А сейчас погладим питомцев по старшенству
+        Comparator ageComp =  new PetsAgeComparator();
+        Collections.sort(pets, ageComp);
+        for (Pet pet : pets) {
+            alex.petTheAimal(pet);            
+        }
+
                 
     }
 
@@ -71,4 +86,6 @@ public class Main {
             System.out.println("Хозяина нет дома");
         }
     }
+
+
 }

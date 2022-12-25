@@ -1,6 +1,6 @@
 package ManAndPet2;
 
-public abstract class Pet{
+public abstract class Pet implements Comparable <Pet>{
     protected String name;
 
     protected int age;
@@ -79,6 +79,12 @@ public abstract class Pet{
     @Override
     public String toString() {
         return "Возраст: " + age + " месяцев, вес: " + weight + "кг";
+    }
+
+    // Сортировка по размеру, размер от веса зависит
+    @Override
+    public int compareTo(Pet o) {
+        return (int) (this.weight * 100) - (int) (o.weight * 100);
     }    
     
 }

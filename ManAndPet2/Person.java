@@ -69,5 +69,11 @@ public class Person implements ActionWithPet, DishesAction{
     public void cleanBowl(Bowl bowl) {
         bowl.setClean(true);
     }
+
+    @Override
+    public void petTheAimal(Pet pet) {
+        System.out.println(this.name + " погладил " + pet.name);
+        
+    }
         
 }

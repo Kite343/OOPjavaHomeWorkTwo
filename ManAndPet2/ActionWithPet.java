@@ -5,4 +5,6 @@ package ManAndPet2;
  */
 public interface ActionWithPet {
     public void fillBowl(Bowl bowl);
+
+    public void petTheAimal(Pet pet);
 }
