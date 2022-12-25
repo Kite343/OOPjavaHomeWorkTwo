@@ -2,7 +2,7 @@ package GeoTreeProgramm;
 
 import java.util.ArrayList;
 
-public abstract class Person {
+public abstract class Person  implements Comparable <Person>{
     protected String fullName;
     protected int age;
     protected boolean alive;    
@@ -49,7 +49,12 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return this.fullName;
+        return this.fullName + " " + this.age + " лет";
+    }
+
+    @Override
+    public int compareTo(Person o) {
+        return this.age - o.age;
     }
 
     

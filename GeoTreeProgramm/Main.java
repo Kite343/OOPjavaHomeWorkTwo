@@ -1,6 +1,10 @@
 package GeoTreeProgramm;
 // import java.util.ArrayList;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
 // получилось, что задача разделилась на 2. Рассуждения в файле readme
 
 public class Main {
@@ -55,13 +59,35 @@ public class Main {
         System.out.println(irina.getFullName() + ", дети: " + String.join(", ", gt.spend(irina, Relationship.children)));
         System.out.println(vasya.getFullName() + ", родители: " + String.join(", ", gt.spend(vasya, Relationship.parent)));
 
+        Comparator personeNameComp = new PersNameComparator();
+                
         System.out.println();
         System.out.println("Иерархия вниз");
         gt.printHierarchy(pavel, Relationship.children);
+        System.out.println();
+        System.out.println("Список объектов");
+        ArrayList<Person> pavelChildrens = gt.hierarchy(pavel, Relationship.children);
+        System.out.println(pavelChildrens);
+        Collections.sort(pavelChildrens);
+        // Collections.reverse(pavelChildrens);
+        System.out.println(pavelChildrens);
+        Collections.sort(pavelChildrens, personeNameComp);
+        System.out.println(pavelChildrens);
+
 
         System.out.println();
         System.out.println("Иерархия вверх");
         gt.printHierarchy(olga, Relationship.parent);
+        System.out.println();
+        System.out.println("Список объектов");
+        ArrayList<Person> olgaParent = gt.hierarchy(olga, Relationship.parent);
+        System.out.println(olgaParent);
+        Collections.sort(olgaParent);
+        Collections.reverse(olgaParent);
+        System.out.println(olgaParent);
+        Collections.sort(olgaParent, personeNameComp);
+        System.out.println(olgaParent);
+
     }
 
 }

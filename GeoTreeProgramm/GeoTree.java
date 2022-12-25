@@ -9,8 +9,7 @@ public class GeoTree implements Researchs{
     }
 
     public void append(Person p1, Person p2, Relationship r1, Relationship r2) {
-        // tree.add(new Node(p1, r1, p2));
-        // tree.add(new Node(p2, r2, p1));
+        
         tree.add(new Node(p2, r1, p1));
         tree.add(new Node(p1, r2, p2));
     }
@@ -26,11 +25,27 @@ public class GeoTree implements Researchs{
         return resPers;
     }
 
+    // список всех над или под человеком (потомки или предки, начальники-подчиненные)
+    // пока самостоятельно только до такого варианта додумалась, надо погуглить
+    private  ArrayList<Person> resHierarchy = new ArrayList<>();
     @Override
     public ArrayList<Person> hierarchy(Person p, Relationship re) {
-        // TODO Auto-generated method stub
-        return null;
+        this.resHierarchy.clear();
+        addPersResHierarchy(p, re);
+        return resHierarchy;
     }
+
+    private void addPersResHierarchy(Person p, Relationship re){
+        ArrayList<Person> res = getPers(p, re);        
+        if(!res.isEmpty()){
+            this.resHierarchy.addAll(res);
+        }
+        for (Person pers : res) {
+            addPersResHierarchy(pers, re);
+        }        
+    }
+
+
 
     @Override
     public void printHierarchy(Person p, Relationship re) {
